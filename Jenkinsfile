@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        EMAIL_RECIPIENT = 'devteam@example.com'
+        EMAIL_RECIPIENT = 'chnolann@gmail.com'
     }
 
     stages {
@@ -25,7 +25,7 @@ pipeline {
                         emailext (
                             subject: "Test Stage: ${status}",
                             body: "The Unit and Integration Test stage has completed with status: ${status}",
-                            to: "chnolann@gmail.com",
+                            to: "${env.EMAIL_RECIPIENT}",
                             attachmentsPattern: '**/target/surefire-reports/*.txt'
                         )
                     }
@@ -52,7 +52,7 @@ pipeline {
                         emailext (
                             subject: "Security Scan Stage: ${status}",
                             body: "The Security Scan stage has completed with status: ${status}",
-                            to: "chnolann@gmail.com",
+                            to: "${env.EMAIL_RECIPIENT}",
                             attachmentsPattern: '**/dependency-check-report.*'
                         )
                     }
