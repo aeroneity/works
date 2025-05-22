@@ -26,10 +26,9 @@ pipeline {
                             subject: "Test Stage: ${status}",
                             body: "The Unit and Integration Test stage has completed with status: ${status}",
                             to: "chnolann@gmail.com",
-                            from: "chnolann@gmail.com",  // Replace with your configured address
+                            from: "chnolann@gmail.com",
                             attachmentsPattern: '**/target/surefire-reports/*.txt'
                         )
-
                     }
                 }
             }
@@ -55,14 +54,14 @@ pipeline {
                             subject: "Security Scan Stage: ${status}",
                             body: "The Security Scan stage has completed with status: ${status}",
                             to: "${env.EMAIL_RECIPIENT}",
-                            from: "chnolann@gmail.com", // Replace with your SMTP-configured sender
+                            from: "chnolann@gmail.com",
                             attachmentsPattern: '**/dependency-check-report.*',
-                            mimeType: 'text/html' // Optional: ensure email formatting
+                            mimeType: 'text/html'
                         )
                     }
                 }
             }
-
+        } // ← THIS CLOSING BRACE WAS MISSING
 
         stage('Deploy to Staging') {
             steps {
@@ -92,4 +91,3 @@ pipeline {
         }
     }
 }
-
