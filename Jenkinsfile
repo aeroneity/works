@@ -25,7 +25,7 @@ pipeline {
                         emailext (
                             subject: "Test Stage: ${status}",
                             body: "The Unit and Integration Test stage has completed with status: ${status}",
-                            to: "${env.EMAIL_RECIPIENT}",
+                            to: "s223357093@deakin.edu.au",
                             attachmentsPattern: '**/target/surefire-reports/*.txt'
                         )
                     }
@@ -52,7 +52,7 @@ pipeline {
                         emailext (
                             subject: "Security Scan Stage: ${status}",
                             body: "The Security Scan stage has completed with status: ${status}",
-                            to: "${env.EMAIL_RECIPIENT}",
+                            to: "s223357093@deakin.edu.au",
                             attachmentsPattern: '**/dependency-check-report.*'
                         )
                     }
