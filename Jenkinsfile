@@ -44,7 +44,7 @@ pipeline {
         stage('Security Scan') {
             steps {
                 echo 'Stage 4: Security scanning with OWASP Dependency-Check'
-                // sh './dependency-check.sh --project MyApp --scan . --format ALL'
+                sh './dependency-check.sh --project MyApp --scan . --format ALL'
             }
             post {
                 always {
