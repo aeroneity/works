@@ -25,9 +25,11 @@ pipeline {
                         emailext (
                             subject: "Test Stage: ${status}",
                             body: "The Unit and Integration Test stage has completed with status: ${status}",
-                            to: "${env.EMAIL_RECIPIENT}",
+                            to: "chnolann@gmail.com",
+                            from: "chnolann@gmail.com",  // Replace with your configured address
                             attachmentsPattern: '**/target/surefire-reports/*.txt'
                         )
+
                     }
                 }
             }
@@ -53,12 +55,14 @@ pipeline {
                             subject: "Security Scan Stage: ${status}",
                             body: "The Security Scan stage has completed with status: ${status}",
                             to: "${env.EMAIL_RECIPIENT}",
-                            attachmentsPattern: '**/dependency-check-report.*'
+                            from: "chnolann@gmail.com", // Replace with your SMTP-configured sender
+                            attachmentsPattern: '**/dependency-check-report.*',
+                            mimeType: 'text/html' // Optional: ensure email formatting
                         )
                     }
                 }
             }
-        }
+
 
         stage('Deploy to Staging') {
             steps {
